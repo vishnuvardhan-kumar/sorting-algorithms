@@ -21,20 +21,20 @@ def generate_data_set(skew = "random", length=10000, filename = "dataset.txt"):
         with open(filename, "w") as fileobj:
 
             # Inefficient space usage when dealing with large length
-            base_data = [str(random.randint(1,length)) for _ in range(length)]
+            base_data = [random.randint(1,length) for _ in range(length)]
 
             if skew == "random":
-                fileobj.write('\n'.join(base_data))
+                fileobj.write('\n'.join(map(str,base_data)))
                 return time.time()-start_stamp
             
             elif skew == "near":
                 partial_sort(base_data)
-                fileobj.write('\n'.join(base_data))
+                fileobj.write('\n'.join(map(str,base_data)))
                 return time.time()-start_stamp
             
             elif skew == "reverse":
                 partial_sort(base_data)
-                fileobj.write('\n'.join(base_data[::-1]))
+                fileobj.write('\n'.join(map(str,base_data[::-1])))
                 return time.time()-start_stamp
             
             else:
@@ -62,20 +62,22 @@ def partial_sort(seq):
 
 
 if __name__ == '__main__':
-
-    passed = failed = 0
-    totaltime = 0
-    n = int(input("Enter number of tests to run : "))
-    
-    for _ in range(n):
-        try:
-            timed = generate_data_set(random.choice(['random','near','reverse']),random.randint(100,10000)) 
-            assert timed > 0
-            totaltime += timed
-        except AssertionError:
-            failed += 1
-        else:
-            passed += 1
-
-    print(f"Ran {n} tests in {totaltime:.2f} seconds.")
-    print("Passed {}/{} tests.".format(passed,n))
+      pass
+##    Uncomment the following lines for autotesting
+##
+##    passed = failed = 0
+##    totaltime = 0
+##    n = int(input("Enter number of tests to run : "))
+##    
+##    for _ in range(n):
+##        try:
+##            timed = generate_data_set(random.choice(['random','near','reverse']),random.randint(100,10000)) 
+##            assert timed > 0
+##            totaltime += timed
+##        except AssertionError:
+##            failed += 1
+##        else:
+##            passed += 1
+##
+##    print(f"Ran {n} tests in {totaltime:.2f} seconds.")
+##    print("Passed {}/{} tests.".format(passed,n))
