@@ -1,8 +1,15 @@
 # Python implementation of Heap Sort
 # www.github.com/vishnuvardhan-kumar/sorting-algorithms
 
+# Average performance on the data set
+# Near : 0.07 seconds
+# Random : 0.08 seconds
+# Reverse : 0.07 seconds
+
+from timeit import default_timer as timer
+
 def heap_sort(lst):
-  for start in range((len(lst)-2)/2, -1, -1):
+  for start in range(int((len(lst)-2)/2), -1, -1):
     siftdown(lst, start, len(lst)-1)
  
   for end in range(len(lst)-1, 0, -1):
@@ -24,6 +31,23 @@ def siftdown(lst, start, end):
       break
 
 
+if __name__ == '__main__':
+
+    time_taken = 0
+    x = int(input("Enter number of trials : "))
+    
+    for n in range(1,x+1):
+        with open("data/reverse.txt","r") as fileobj:
+            list_to_sort = list(map(int, fileobj.readlines()))
+            start = timer()
+            w = heap_sort(list_to_sort)
+            current = timer()-start
+            print(f"Running test {n} : {current:.2f} seconds")
+            time_taken += current
+    
+
+    time_taken /= x
+    print(f"Heap sort: average time = {time_taken:.2f} seconds")       
 
 
 
