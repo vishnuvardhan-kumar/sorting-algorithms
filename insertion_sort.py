@@ -2,9 +2,9 @@
 # www.github.com/vishnuvardhan-kumar/sorting-algorithms
 
 # Average performance on the data set
-# Near : 2.20 seconds
+# Near : 1.20 seconds
 # Random : 2.47 seconds
-# Reverse : 3.25 seconds
+# Reverse : 2.25 seconds
 
 from timeit import default_timer as timer
 
