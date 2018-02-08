@@ -33,10 +33,10 @@ if __name__ == '__main__':
     x = int(input("Enter number of trials : "))
     
     for n in range(1,x+1):
-        with open("data/reverse.txt","r") as fileobj:
+        with open("data/random.txt","r") as fileobj:
             list_to_sort = list(map(int, fileobj.readlines()))
             start = timer()
-            quick_sort(list_to_sort)
+            l = quick_sort(list_to_sort)
             current = timer()-start
             print(f"Running test {n} : {current:.2f} seconds")
             time_taken += current
