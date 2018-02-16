@@ -35,6 +35,7 @@ if __name__ == '__main__':
             print(f"Running test {n} : {current:.2f} seconds")
             time_taken += current
     
+    assert sorted(list_to_sort) == list_to_sort
 
     time_taken /= x
     print(f"Comb sort: average time = {time_taken:.2f} seconds")       
