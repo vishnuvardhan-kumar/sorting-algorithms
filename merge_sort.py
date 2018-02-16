@@ -35,7 +35,8 @@ if __name__ == '__main__':
             current = timer()-start
             print(f"Running test {n} : {current:.2f} seconds")
             time_taken += current
-    
+
+    assert sorted(list_to_sort) == r
 
     time_taken /= x
     print(f"Merge sort: average time = {time_taken:.2f} seconds")
